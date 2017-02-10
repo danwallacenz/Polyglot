@@ -19,12 +19,12 @@ class ViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         title = "POLYGLOT"
         
-        let defaults = UserDefaults.standard
-        
-        if let savedWords = defaults.object(forKey: "Words") as? [String] {
-            words = savedWords
-        } else {
-            saveInitialValues(to: defaults)
+        if let defaults = UserDefaults(suiteName: "group.nz.co.danwallace.Polyglot") {
+            if let savedWords = defaults.object(forKey: "Words") as? [String] {
+                words = savedWords
+            } else {
+                saveInitialValues(to: defaults)
+            }
         }
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewWord))
@@ -91,8 +91,9 @@ class ViewController: UITableViewController {
     }
 
     func saveWords() {
-        let defaults = UserDefaults.standard
-        defaults.set(words, forKey: "Words")
+        if let defaults = UserDefaults(suiteName: "group.nz.co.danwallace.Polyglot") {
+            defaults.set(words, forKey: "Words")
+        }
     }
     
     func addNewWord() {
