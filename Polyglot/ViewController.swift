@@ -29,6 +29,8 @@ class ViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewWord))
         
+        tableView?.tableFooterView = UIView()
+        
     }
 
     func saveInitialValues(to defaults: UserDefaults) {
