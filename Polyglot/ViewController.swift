@@ -31,6 +31,8 @@ class ViewController: UITableViewController {
         
         tableView?.tableFooterView = UIView()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(startTest))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "End Test", style: .plain, target: nil, action: nil)
     }
 
     func saveInitialValues(to defaults: UserDefaults) {
@@ -140,6 +142,13 @@ class ViewController: UITableViewController {
         tableView.insertRows(at: [newIndexPath], with: .automatic)
         
         saveWords()
+    }
+    
+    func startTest() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "Test") as? TestViewController else { return }
+        vc.words = words
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

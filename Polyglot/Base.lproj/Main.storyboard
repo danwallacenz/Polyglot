@@ -54,6 +54,51 @@
             </objects>
             <point key="canvasLocation" x="1007.2" y="-48.125937031484263"/>
         </scene>
+        <!--Test View Controller-->
+        <scene sceneID="xcn-iW-pVT">
+            <objects>
+                <viewController storyboardIdentifier="Test" id="LkY-fY-EZ4" customClass="TestViewController" customModule="Polyglot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RhW-Ck-2Zq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zkn-pj-F8S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G6i-ab-iKL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Pgx-jz-Ffu">
+                                <rect key="frame" x="68" y="280" width="239" height="107"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How do you say this in English?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1a-gL-rl6">
+                                        <rect key="frame" x="0.0" y="0.0" width="239" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MV8-50-byH">
+                                        <rect key="frame" x="0.0" y="60.5" width="239" height="46.5"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pgx-jz-Ffu" firstAttribute="centerY" secondItem="G6i-ab-iKL" secondAttribute="centerY" id="KKA-RT-UvU"/>
+                            <constraint firstItem="Pgx-jz-Ffu" firstAttribute="centerX" secondItem="G6i-ab-iKL" secondAttribute="centerX" id="hIJ-yB-uCO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="prompt" destination="MV8-50-byH" id="QHk-ME-jDM"/>
+                        <outlet property="stackView" destination="Pgx-jz-Ffu" id="l50-kT-sNL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="np6-n3-yLY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1692" y="190"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="JAI-fz-Ogq">
             <objects>
