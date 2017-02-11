@@ -25,6 +25,9 @@ class TestViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .fastForward, target: self, action: #selector(nextTapped))
         words = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: words) as! [String]
         title = "TEST"
+        
+        stackView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        stackView.alpha = 0
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -58,24 +61,30 @@ class TestViewController: UIViewController {
         
         // pull out the French word at the current question position
         prompt.text = words[questionCounter].components(separatedBy: "::")[1]
+        
+        let animation = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 0.5) {
+            self.stackView.alpha = 1
+            self.stackView.transform = CGAffineTransform.identity
+        }
+        
+        animation.startAnimation()
     }
     
     func prepareForNextQuestion() {
-        // reset the prompt back to black
-        prompt.textColor = UIColor.black
         
-        // proceed with the next question
-        askQuestion()
+        let animation = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) { [unowned self] in
+            self.stackView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            self.stackView.alpha = 0
+        }
+        
+        animation.addCompletion { [unowned self] position in
+            
+            // reset the prompt back to black
+            self.prompt.textColor = UIColor.black
+        
+            // proceed with the next question
+            self.askQuestion()
+        }
+        animation.startAnimation()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
